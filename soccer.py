@@ -1,4 +1,5 @@
 import pygame
+from pygame import *
 from INI import *
 from Field import *
 from Ball import *
@@ -12,7 +13,6 @@ myfont = pygame.font.SysFont('Comic Sans MS', 50)
 
 window = pygame.display.set_mode((win_width, win_height))
 BackGround = Background('Field.jpg', [0,0])
-
 points = [0 , 0]
 player1 = player(window,0)
 player2 = player(window,1)

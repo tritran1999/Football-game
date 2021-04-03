@@ -27,7 +27,7 @@ class Ball:
 
         #print(self.speed)
         if (self.X > win_width or self.X < 0):
-            if (self.Y > 165 and self.Y  < 240):
+            if (self.Y > goal_loc[0] and self.Y  < goal_loc[1]):
                 if (self.X < 0):
                     self.goal = [0 , 1]
                 else:
@@ -48,5 +48,4 @@ class Ball:
                     self.Y = win_height
                 if self.Y < 0:
                     self.Y = 0
-        print(self.speed)
         pygame.draw.circle(self.window, black, (self.X, self.Y), self.radius)
