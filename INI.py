@@ -11,6 +11,7 @@ soccer_green = (1, 166, 17)
 win_width = 800
 win_height = 600
 goal_loc = [(win_height/2 - win_height*37/405),(win_height/2 + win_height*37/405)]
+wall_loc = [(win_height - win_height*20/405),(win_height*20/405), (win_width*20/405), (win_width - win_width*20/405)]
 radius = 10
 x = 0
 y = 1

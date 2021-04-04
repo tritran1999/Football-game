@@ -12,7 +12,7 @@ myfont = pygame.font.SysFont('Comic Sans MS', 50)
 
 
 window = pygame.display.set_mode((win_width, win_height))
-BackGround = Background('Field.jpg', [0,0])
+BackGround = Background('Field1.jpg', [0,0])
 points = [0 , 0]
 player1 = player(window,0)
 player2 = player(window,1)
@@ -21,8 +21,6 @@ kicked = False
 
 def collision (x1, y1, r1, x2, y2, r2):
     if ((x1-x2)**2 + (y1-y2)**2) <= (r1 + r2)**2:
-        #print(x1)
-        #print((x1-x2)**2 + (y1-y2)**2)
         return True
     else:
         return False

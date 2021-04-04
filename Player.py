@@ -18,9 +18,9 @@ class player:
     def move (self,dir):
         newX = self.X + dir[0]*4
         newY = self.Y + dir[1]*4
-        if (newX  < win_width and newX > 0):
+        if (newX  < wall_loc[3] and newX > wall_loc[2]):
             self.X = newX
-        if (newY  < win_height and newY > 0):
+        if (newY  < wall_loc[0] and newY > wall_loc[1]):
             self.Y = newY
         pygame.draw.circle(self.window, self.color, (self.X, self.Y), self.radius)
         
