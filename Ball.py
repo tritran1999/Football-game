@@ -10,7 +10,7 @@ from INI import *
 class Ball:
     def __init__(self, window):
         self.window = window
-        self.ball = pygame.image.load("ball2.png")
+        self.ball = pygame.image.load("images/ball2.png")
         self.X = int(ball_pos[x])
         self.Y = int(ball_pos[y])
         self.radius = 15
