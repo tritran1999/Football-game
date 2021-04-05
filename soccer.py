@@ -12,7 +12,7 @@ myfont = pygame.font.SysFont('Comic Sans MS', 50)
 
 
 window = pygame.display.set_mode((win_width, win_height))
-BackGround = Background('Field1.jpg', [0,0])
+BackGround = Background('images/Field.jpg', [0,0])
 points = [0 , 0]
 player1 = player(window,0)
 player2 = player(window,1)
