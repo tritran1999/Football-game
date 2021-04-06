@@ -1,4 +1,5 @@
 import pygame
+from pygame import *
 
 #def drawBall(window):
 #    ball = pygame.image.load("ball2.png")
@@ -10,16 +11,17 @@ from INI import *
 class Ball:
     def __init__(self, window):
         self.window = window
-        self.ball = pygame.image.load("images/ball2.png")
-        self.X = int(ball_pos[x])
-        self.Y = int(ball_pos[y])
-        self.radius = 15
+        self.X = int(ball_pos[x]) - 10
+        self.Y = int(ball_pos[y]) - 10
+        self.radius = 18
+        self.ball_radius = 35
         self.speed = [0 , 0]
         self.goal = [0 , 0]
-        # self.X = 300
-        # self.Y = 200
+        self.ball = transform.scale(pygame.image.load("images/ball.png"), (self.ball_radius, self.ball_radius))
+        self.ball_rect = self.ball.get_rect()
+        self.ball_rect.center = (self.X, self.Y)
         # pygame.draw.circle(self.window, black, (self.X, self.Y), self.radius)
-        self.window.blit(self.ball,(self.X - self.radius,self.Y - self.radius))
+        self.window.blit(self.ball,self.ball_rect)
     def move (self,kicked):
         self.X = self.X + self.speed[0]
         self.Y = self.Y + self.speed[1]
@@ -50,4 +52,7 @@ class Ball:
                     self.Y = win_height
                 if self.Y < 0:
                     self.Y = 0
-        self.window.blit(self.ball,(self.X - self.radius,self.Y - self.radius))
+        self.ball_rect = self.ball.get_rect()
+        self.ball_rect.center = (self.X, self.Y)
+        self.window.blit(self.ball,self.ball_rect)
+        # self.window.blit(self.ball,(self.X,self.Y))
