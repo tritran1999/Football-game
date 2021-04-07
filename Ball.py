@@ -1,5 +1,6 @@
 import pygame
 from pygame import *
+from SoundEffects import *
 
 #def drawBall(window):
 #    ball = pygame.image.load("ball2.png")
@@ -20,6 +21,7 @@ class Ball:
         self.ball = transform.scale(pygame.image.load("images/ball.png"), (self.ball_radius, self.ball_radius))
         self.ball_rect = self.ball.get_rect()
         self.ball_rect.center = (self.X, self.Y)
+        self.SoundEffect = SoundEffects()
         # pygame.draw.circle(self.window, black, (self.X, self.Y), self.radius)
         self.window.blit(self.ball,self.ball_rect)
     def move (self,kicked):
@@ -34,8 +36,10 @@ class Ball:
             if (self.Y > goal_loc[0] and self.Y  < goal_loc[1]):
                 if (self.X < wall_loc[2]):
                     self.goal = [0 , 1]
+                    self.SoundEffect.playGoal()
                 else:
                     self.goal = [1 , 0]
+                    self.SoundEffect.playGoal()
             else:
                 if kicked:
                     self.speed[0] *= -1
