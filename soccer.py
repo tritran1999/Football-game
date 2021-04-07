@@ -12,10 +12,11 @@ pygame.mixer.init()
 pygame.init()
 pygame.font.init()
 myfont = pygame.font.SysFont('Comic Sans MS', 50)
-
+font = "Retro.ttf"
 
 window = pygame.display.set_mode((win_width, win_height))
 BackGround = Background('Field1.jpg', [0,0])
+menuBackground = Background('images/MenuBackground.jpg', [0,0])
 points = [0 , 0]
 player1 = player(window,0)
 player2 = player(window,1)
@@ -38,6 +39,60 @@ def moveBall(player):
     else:
         ball1.speed = [4 * p2dirX, 4 * p2dirY]
 
+def text_format(message, textFont, textSize, textColor):
+    newFont=pygame.font.Font(textFont, textSize)
+    newText=newFont.render(message, 0, textColor)
+
+    return newText
+
+def main_menu():
+
+    menu=True
+    selected = "start"
+
+    while menu:
+        for event in pygame.event.get():
+            if event.type==pygame.QUIT:
+                pygame.quit()
+            if event.type==pygame.KEYDOWN:
+                if selected == "start":
+                    if event.key == pygame.K_UP or event.key==pygame.K_DOWN:
+                        selected = "quit"
+                    if event.key == pygame.K_RETURN:
+                        menu = False
+                else:
+                    if event.key==pygame.K_UP or event.key==pygame.K_DOWN:
+                        selected = "start"
+                    if event.key == pygame.K_RETURN:
+                        pygame.quit()
+
+
+        # Main Menu UI
+        window.blit(menuBackground.image, menuBackground.rect)
+        title=text_format("Football Head Game", font, 90, yellow)
+        if selected=="start":
+            text_start=text_format("START", font, 75, white)
+        else:
+            text_start = text_format("START", font, 75, black)
+        if selected=="quit":
+            text_quit=text_format("QUIT", font, 75, white)
+        else:
+            text_quit = text_format("QUIT", font, 75, black)
+
+        title_rect=title.get_rect()
+        start_rect=text_start.get_rect()
+        quit_rect=text_quit.get_rect()
+
+        # Main Menu Text
+        window.blit(title, (win_width/2 - (title_rect[2]/2), 80))
+        window.blit(text_start, (win_width/2 - (start_rect[2]/2), 300))
+        window.blit(text_quit, (win_width/2 - (quit_rect[2]/2), 360))
+        pygame.display.update()
+
+        
+
+
+main_menu()
 while True:
 
     event = pygame.event.poll()

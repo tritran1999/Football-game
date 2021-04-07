@@ -8,6 +8,7 @@ green = (0, 255, 0)
 blue =  (0, 0, 255)
 purple = (100, 0, 100)
 soccer_green = (1, 166, 17)
+yellow=(255, 255, 0)
 win_width = 800
 win_height = 600
 goal_loc = [(win_height/2 - win_height*37/405),(win_height/2 + win_height*37/405)]
