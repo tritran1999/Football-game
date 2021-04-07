@@ -4,19 +4,23 @@ from INI import *
 from Field import *
 from Ball import *
 from Player import *
+from SoundEffects import *
 #print(y)
-        
+
+
+pygame.mixer.init()
 pygame.init()
 pygame.font.init()
 myfont = pygame.font.SysFont('Comic Sans MS', 50)
 
 
 window = pygame.display.set_mode((win_width, win_height))
-BackGround = Background('images/Field.jpg', [0,0])
+BackGround = Background('Field1.jpg', [0,0])
 points = [0 , 0]
 player1 = player(window,0)
 player2 = player(window,1)
 ball1 = Ball(window)
+SoundEffect = SoundEffects()
 kicked = False
 
 def collision (x1, y1, r1, x2, y2, r2):
@@ -77,6 +81,7 @@ while True:
         ball1.speed = [4 * p1dirX, 4 * p1dirY]
         if pressed[pygame.K_SPACE]                     :
             kicked = True
+            SoundEffect.playKick()
             dirX = int((ball1.X - player1.X)/5)
             dirY = int((ball1.Y - player1.Y)/5)
             ball1.speed = [8*ball1.speed[0], 8*ball1.speed[1]]
@@ -89,6 +94,7 @@ while True:
         ball1.speed = [4 * p2dirX, 4 * p2dirY]
         if pressed[pygame.K_p]:
             kicked = True
+            SoundEffect.playKick()
             dirX = int((ball1.X - player2.X) / 5)
             dirY = int((ball1.Y - player2.Y) / 5)
             ball1.speed = [8 * ball1.speed[0], 8 * ball1.speed[1]]
