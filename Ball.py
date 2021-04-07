@@ -43,6 +43,7 @@ class Ball:
             else:
                 if kicked:
                     self.speed[0] *= -1
+                    self.SoundEffect.playHitWall()
                 else:
                     if self.X > wall_loc[3]:
                         self.X = wall_loc[3]
@@ -51,11 +52,12 @@ class Ball:
         if (self.Y > wall_loc[0] or self.Y < wall_loc[1]):
             if kicked:
                 self.speed[1] *= -1
+                self.SoundEffect.playHitWall()
             else:
-                if self.Y > win_height:
-                    self.Y = win_height
-                if self.Y < 0:
-                    self.Y = 0
+                if self.Y > wall_loc[0]:
+                    self.Y = wall_loc[0]
+                if self.Y < wall_loc[1]:
+                    self.Y = wall_loc[1]
         self.ball_rect = self.ball.get_rect()
         self.ball_rect.center = (self.X, self.Y)
         self.window.blit(self.ball,self.ball_rect)
